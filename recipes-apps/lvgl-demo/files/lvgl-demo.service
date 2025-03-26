@@ -1,0 +1,17 @@
+[Unit]
+Description=Lvgl Demo
+After=local-fs.target
+
+[Service]
+ExecStartPre=/bin/busybox sleep 0.3
+ExecStartPre=/usr/bin/psplash-write "PROGRESS 90"
+ExecStartPre=/bin/busybox sleep 0.1
+ExecStartPre=/usr/bin/psplash-write "PROGRESS 100"
+ExecStartPre=/bin/busybox sleep 0.1
+ExecStart=/usr/bin/lvgl-demo
+Restart=always
+User=root
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multi-user.target
